@@ -107,8 +107,8 @@ void distinctLevel(node* root ){
         node* front = q.front();
         q.pop();
         if(front != NULL){
+            cout << front->data<<" ";
             while(front != NULL){
-                cout << front->data<<" ";
                 if(front->left) 
                 q.push(front->left);
                 if(front->right)
@@ -126,12 +126,50 @@ void distinctLevel(node* root ){
 void rigthViewIterative(node *root ){
 
 }
+
+void zigZagTraversal(node* root ){
+    stack<node*> currLevel , nextLevel;
+    bool leftToRight= true;
+    currLevel.push(root);
+    while(!currLevel.empty() or !nextLevel.empty() ){
+        node* top = currLevel.top();
+        cout << top->data<<",";
+        currLevel.pop();
+        if(leftToRight == true){
+            if(top->left)
+            nextLevel.push(top->left);
+            if(top->right)
+            nextLevel.push(top->right);
+        }else{
+            if(top->right)
+            nextLevel.push(top->right);
+            if(top->left)
+            nextLevel.push(top->left);
+        }
+        if(currLevel.empty() == true){
+            leftToRight = !leftToRight;
+            swap(currLevel , nextLevel);
+            cout << endl;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 int main()
 {
     node *root = buildTree();
     int maxLevel  =  0;
     leftView(root , 1 , maxLevel );
     distinctLevel(root);
+    cout <<"\n";
+    zigZagTraversal(root );
     // preOrder(root);
     // cout << "\n";
     // cout << countNoOfNodes(root);
