@@ -155,7 +155,16 @@ void zigZagTraversal(node* root ){
 }
 
 
+map<int,vector<int>> mp;
+void verticalOrderTraversal(node* root,int level){
+    if(root == NULL) return ;
 
+    mp[level].push_back(root->data);
+
+    verticalOrderTraversal(root->left, level-1);
+    verticalOrderTraversal(root->right , level+1);
+
+}
 
 
 
@@ -169,7 +178,14 @@ int main()
     leftView(root , 1 , maxLevel );
     distinctLevel(root);
     cout <<"\n";
-    zigZagTraversal(root );
+    verticalOrderTraversal(root , 0 );
+    for(auto it: mp){
+       for(int x : it.second ){
+           cout << x <<" ";
+       } 
+       cout <<endl;
+    }
+    // zigZagTraversal(root );
     // preOrder(root);
     // cout << "\n";
     // cout << countNoOfNodes(root);
