@@ -79,15 +79,65 @@ int replaceNodeWithSum(node* root){
     root->data+= leftSum+ rightSum;
     return root->data;
 }
+void leftView(node* root, int level , int &maxLevel ){
+    if(root == NULL) return ;
+    if(level > maxLevel){
+        cout << root->data<<", ";
+        maxLevel = level;
+    }
+    leftView(root->left, level+1 , maxLevel);
+    leftView(root->right , level+1 , maxLevel);
+
+}
+void rightView(node*root , int level , int &maxLevel){
+    if(root == NULL) return ;
+    if(level > maxLevel) {
+        cout << root->data<<", ";
+        maxLevel = level;
+    }
+    rightView(root->right,level+1 , maxLevel );
+    rightView(root->left, level+1 , maxLevel);
+}
+
+void distinctLevel(node* root ){
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL);
+    while(!q.empty()){
+        node* front = q.front();
+        q.pop();
+        if(front != NULL){
+            while(front != NULL){
+                cout << front->data<<" ";
+                if(front->left) 
+                q.push(front->left);
+                if(front->right)
+                q.push(front->right);
+                front = q.front();
+                q.pop();
+            }
+            cout <<endl;
+            q.push(NULL); // present level is completed traversed
+        }
+
+    }
+}
+
+void rigthViewIterative(node *root ){
+
+}
 int main()
 {
     node *root = buildTree();
-    preOrder(root);
-    cout << "\n";
-    cout << countNoOfNodes(root);
-    cout <<"\n";
-    cout << height(root);
-    cout <<endl;
-    replaceNodeWithSum(root);
-    levelOrderTraversal(root);
+    int maxLevel  =  0;
+    leftView(root , 1 , maxLevel );
+    distinctLevel(root);
+    // preOrder(root);
+    // cout << "\n";
+    // cout << countNoOfNodes(root);
+    // cout <<"\n";
+    // cout << height(root);
+    // cout <<endl;
+    // replaceNodeWithSum(root);
+    // levelOrderTraversal(root);
 }
