@@ -163,7 +163,6 @@ void verticalOrderTraversal(node* root,int level){
 
     verticalOrderTraversal(root->left, level-1);
     verticalOrderTraversal(root->right , level+1);
-
 }
 
 
