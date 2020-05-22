@@ -49,12 +49,6 @@ int countNoOfNodes(node *root)
     return 1 + countNoOfNodes(root->left) + countNoOfNodes(root->right);
 }
 
-int height(node* root){
-    if(root == NULL){
-        return 0;
-    }
-    return 1 + max(height(root->left) , height(root->right));
-}
 void levelOrderTraversal(node* root){
     if(root == NULL) return ;
     queue<node*> q;
@@ -165,7 +159,21 @@ void verticalOrderTraversal(node* root,int level){
     verticalOrderTraversal(root->right , level+1);
 }
 
-
+int height(node* root){
+    if(root == NULL){
+        return 0;
+    }
+    return 1 + max(height(root->left) , height(root->right));
+}
+int diameter(node* root ){
+    if(root == NULL) return 0;
+    int h1 = height(root->left);
+    int h2= height(root->right);
+    int op1= h1+h2;
+    int diameterL = diameter(root->left);
+    int diameterR = diameter(root->right);
+    return max({op1, diameterL, diameterR});
+}
 
 
 
@@ -173,6 +181,8 @@ void verticalOrderTraversal(node* root,int level){
 int main()
 {
     node *root = buildTree();
+    
+    cout << diameter(root);
     int maxLevel  =  0;
     leftView(root , 1 , maxLevel );
     distinctLevel(root);
