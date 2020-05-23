@@ -34,4 +34,12 @@ int main()
     cout << "\n";
     for (int element : vec)
         cout << element << " ";
+
+    vector<char> c;
+    c.push_back('a');
+    c.push_back('g');
+    c.pop_back();
+
+    for(char element : c) cout << element<<" ";
+    
 }
