@@ -150,13 +150,13 @@ void zigZagTraversal(node* root ){
 
 
 map<int,vector<int>> mp;
-void verticalOrderTraversal(node* root,int level){
+void verticalOrderTraversal(node* root,int distance){
     if(root == NULL) return ;
 
-    mp[level].push_back(root->data);
+    mp[distance].push_back(root->data);
 
-    verticalOrderTraversal(root->left, level-1);
-    verticalOrderTraversal(root->right , level+1);
+    verticalOrderTraversal(root->left, distance-1);
+    verticalOrderTraversal(root->right , distance+1);
 }
 
 int height(node* root){

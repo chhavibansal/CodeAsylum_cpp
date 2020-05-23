@@ -1,0 +1,25 @@
+O(N+M)
+https://leetcode.com/problems/search-a-2d-matrix/
+
+Plus one
+https://leetcode.com/problems/plus-one/
+
+Pascal triangle
+https://leetcode.com/problems/pascals-triangle/
+
+Moore Voting Algo
+https://leetcode.com/problems/majority-element/
+
+Move Zeros
+https://leetcode.com/problems/move-zeroes/
+
+Contains Duplicate
+https://leetcode.com/problems/contains-duplicate/
+
+Sorting Height Checker
+https://leetcode.com/problems/height-checker/
+
+HW
+https://leetcode.com/problems/monotonic-array/
+
+https://leetcode.com/problems/next-permutation/
