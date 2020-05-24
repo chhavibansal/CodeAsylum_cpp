@@ -5,6 +5,7 @@ https://leetcode.com/problems/maximum-subarray/
 O(N+M)
 https://leetcode.com/problems/search-a-2d-matrix/
 
+(DONE)
 Plus one
 https://leetcode.com/problems/plus-one/
 
@@ -20,10 +21,12 @@ https://leetcode.com/problems/move-zeroes/
 Contains Duplicate
 https://leetcode.com/problems/contains-duplicate/
 
-Sorting Height Checker
-https://leetcode.com/problems/height-checker/
-
 HW
 https://leetcode.com/problems/monotonic-array/
 
+STL
 https://leetcode.com/problems/next-permutation/
+
+24/05/20
+
+https://leetcode.com/problems/product-of-array-except-self/
