@@ -1,7 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <bits/stdc++.h>
-
+bool cmp(int a, int b){
+    return a > b;
+}
 using namespace std;
 int main()
 {
@@ -20,26 +22,29 @@ int main()
         cout << vec[i] << ",";
     }
     cout << endl;
+    // for(int element: vec){
+    //     cout << element<<" ";
+    // }
     // for-each loop
     // for(auto  element: vec){
     //     cout << element<<" ";
     // }
     cout << "\n";
-    sort(vec.begin(), vec.end());
+    sort(vec.begin(), vec.end(), cmp);
 
     for (int element : vec)
         cout << element << " ";
 
-    swap(vec[0], vec[1]);
-    cout << "\n";
-    for (int element : vec)
-        cout << element << " ";
+    // swap(vec[0], vec[1]);
+    // cout << "\n";
+    // for (int element : vec)
+    //     cout << element << " ";
 
-    vector<char> c;
-    c.push_back('a');
-    c.push_back('g');
-    c.pop_back();
+    // vector<char> c;
+    // c.push_back('a');
+    // c.push_back('g');
+    // c.pop_back();
 
-    for(char element : c) cout << element<<" ";
+    // for(char element : c) cout << element<<" ";
     
 }
