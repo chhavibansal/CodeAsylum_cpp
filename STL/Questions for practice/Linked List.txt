@@ -1,0 +1,26 @@
+Add linked List
+https://leetcode.com/problems/add-two-numbers/
+
+
+//impt 
+remove nth from end
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+
+swap nodes in pair 
+//impt for interview
+https://leetcode.com/problems/swap-nodes-in-pairs/
+
+
+//Algorithm
+(very easy)
+https://leetcode.com/problems/middle-of-the-linked-list/
+
+cycle detection
+https://leetcode.com/problems/linked-list-cycle/
+
+cycle removal
+
+https://leetcode.com/problems/linked-list-cycle-ii/
+
+theory
+https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
