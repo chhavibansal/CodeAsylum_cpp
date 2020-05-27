@@ -36,3 +36,45 @@ public:
         }
         return -1;
         // https://leetcode.com/problems/search-in-rotated-sorted-array/
+
+
+        class Solution {
+public:
+    string reverseWords(string s) {
+        string temp;
+        string ans;
+        for(char c : s){
+            if(c ==  ' '){
+                reverse(temp.begin() , temp.end());
+                ans += temp +   " ";
+                temp="";
+            }else{
+                temp+=c;
+            }
+        }
+          reverse(temp.begin() , temp.end());
+                ans += temp +   " ";
+                temp="";
+        ans.pop_back();
+        return ans;
+    }
+};
+// https://leetcode.com/problems/reverse-words-in-a-string-iii/
+
+class Solution {
+public:
+    string reverseWords(string s) {
+        if(s.size() == 0 ) return s;
+        
+        stringstream ss(s);
+        string ans ;
+        string word;
+        while(ss >> word){
+            // cout << word <<" ";
+            reverse(word.begin() , word.end());
+            ans+= word + " ";
+        }
+        ans.pop_back();
+        return ans;
+    }
+};
