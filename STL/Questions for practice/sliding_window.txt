@@ -1,1 +1,11 @@
 https://leetcode.com/problems/find-all-anagrams-in-a-string/
+
+https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/
+
+https://leetcode.com/problems/sliding-window-maximum/
+
+https://leetcode.com/problems/permutation-in-string/
+
+
+//impt
+https://leetcode.com/problems/longest-substring-without-repeating-characters/
