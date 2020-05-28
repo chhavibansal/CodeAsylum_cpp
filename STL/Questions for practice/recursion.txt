@@ -1,0 +1,45 @@
+// arrray
+Q. print in increasing order n = 5 
+Q. check if array is sorted
+Q. tower of hanoi
+Q. find in array using recursion 
+eg 1 2 3  5  6  7
+find if 4 is present 
+
+Q. given a number print its equivalent string 
+eg 
+i/p 2048 
+o/p two zero four eight
+Q. remove duplicate character
+i/p aaabbddefe
+o/p abdefe
+
+Q Tiling Problem 
+
+Q. (another form) remove character if duplicate occur
+i/p aaabdeefe
+o/p bdfe
+
+Q reverse stack using recursion
+i/p 3
+3
+2
+1
+
+//impt for interview
+
+Q Keypad recursion
+https://www.geeksforgeeks.org/find-possible-words-phone-digits/
+Q fast power (Google)
+
+Q all parenthesis combination
+Q rat in maze (print path)  -> with and without obstacle
+
+Q Subsequence of string
+Q Generate paranthesis
+https://www.geeksforgeeks.org/print-all-combinations-of-balanced-parentheses/
+Q all permutation of string
+https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/
+
+//link
+https://www.geeksforgeeks.org/recursion-practice-problems-solutions/
