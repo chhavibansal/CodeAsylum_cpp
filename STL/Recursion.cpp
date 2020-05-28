@@ -22,6 +22,16 @@ void keypad_recursion(string in , string out, int i ){
     }
 }
 
+bool isSorted(int arr[], int n , int i ){
+    if(i == n-1)
+    return true;
+
+    if(i+1 < n and arr[i] <= arr[i+1])
+    return isSorted(arr, n , i+1);
+
+    return false;
+}
+
 // time complexity O(N)
 int power_slow(int a , int n){
     if(n == 0) return 1;
@@ -38,11 +48,37 @@ int fast_power(int a, int n){
     return smallAns;
 }
 
+void generateParenthesis(string out , int opening_remaining, int closing_remaining ){
+    // base case
+    if(opening_remaining ==  0 and closing_remaining == 0 ){
+        cout <<out <<",";
+        return;
+    }
+    if(opening_remaining > 0 )
+    generateParenthesis(out+"(" , opening_remaining-1 , closing_remaining);
+
+
+    if(closing_remaining > opening_remaining)
+    generateParenthesis(out+")" , opening_remaining, closing_remaining-1);
+
+}
+
+
 int main(){
     int a , n;
-    string str;
-    cin >> str;
-    keypad_recursion(str, "" , 0);
+    cin >> n ;
+    generateParenthesis("", n , n);
+    // int arr[n];
+    // for(int i= 0 ; i < n ; i++){
+    //     cin  >> arr[i];
+    // }
+    // if(isSorted(arr, n , 0)){
+    //     cout <<"YES\n";
+
+    // }else cout <<"NO\n";
+    // string str;
+    // cin >> str;
+    // keypad_recursion(str, "" , 0);
     // cin >> a >> n;
     // cout << power_slow(a , n);
     // cout <<endl;
