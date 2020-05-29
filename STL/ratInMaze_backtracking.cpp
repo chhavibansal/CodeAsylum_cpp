@@ -1,29 +1,61 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
-bool findPath(char maze[][10], int soln[][10] , int i , int j , int n , int m ){
-    if(maze[i][j] == 'O' and  i == n-1 and j == m-1){
-        cout <<"true";
+
+bool visited[1001][1001],solution[1001][1001];
+bool RatinMaze(char maze[][1001], int i,int j,int m, int n){
+    
+    if(i==m && j==n){
+        solution[i][j] = 1;
+        for(int x=0;x<=m;x++){
+            for(int y=0;y<=n;y++){
+                cout<<solution[x][y]<<" ";
+            }
+            cout<<endl;
+        }
         return true;
     }
-    if( i >= n and  j >=m ) return false;
 
-
-    if( maze[i][j] == 'X')
-    return false;
-    soln[i][j] = 1;
-    bool rigthSuccess = findPath(maze, soln , i , j+1  , n , m);
-    bool downSuccess = findPath(maze, soln , i +1 , j  , n , m);
-
-    soln[i][j] = 0;
-
-    if(rigthSuccess || downSuccess) return true;
-
-
-  
-    return false;
-}
-int main(){
+    if(visited[i][j]){
+        return false;
+    }
     
+    visited[i][j]=1;
+    solution[i][j] = 1;
+        if(j+1<=n && !visited[i][j+1]){
+                bool rightsuccess = RatinMaze(maze,i,j+1,m,n);
+                if(rightsuccess==true){
+                    return true;
+                }
+        }
+        if(i+1<=m && !visited[i+1][j]){
+                bool downsuccess = RatinMaze(maze,i+1,j,m,n);
+                if(downsuccess==true){
+                    return true;
+                }
+        }
+    solution[i][j] = 0;
+    return false;
 }
 
-// string ch[10]= { " ", ".+@$", "abc", "def", "ghi", "jkl" , "mno", "pqrs" , "tuv", "wxyz" };
+
+int main(){
+    char maze[1001][1001];
+    int n,m;
+    cin>>m>>n;
+    for(int i=0;i<m;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cin>>maze[i][j];
+            if(maze[i][j]=='X')
+                visited[i][j]=1;
+        }
+    }
+    m--;
+    n--;
+    int Y = RatinMaze(maze,0,0,m,n);
+    if(Y==false){
+        cout<<"-1";
+    }
+    return 0;
+}
