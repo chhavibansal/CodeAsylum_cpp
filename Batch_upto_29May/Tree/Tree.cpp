@@ -49,151 +49,203 @@ int countNoOfNodes(node *root)
     return 1 + countNoOfNodes(root->left) + countNoOfNodes(root->right);
 }
 
-void levelOrderTraversal(node* root){
-    if(root == NULL) return ;
-    queue<node*> q;
+void levelOrderTraversal(node *root)
+{
+    if (root == NULL)
+        return;
+    queue<node *> q;
     q.push(root);
-    while(!q.empty()){
-        node* front = q.front();
-        cout << front->data<<", ";
+    while (!q.empty())
+    {
+        node *front = q.front();
+        cout << front->data << ", ";
         q.pop();
-        if(front->left != NULL){
+        if (front->left != NULL)
+        {
             q.push(front->left);
         }
 
-        if(front->right != NULL){
+        if (front->right != NULL)
+        {
             q.push(front->right);
         }
     }
 }
-int replaceNodeWithSum(node* root){
-    if(root == NULL) return 0 ;
+int replaceNodeWithSum(node *root)
+{
+    if (root == NULL)
+        return 0;
     int leftSum = replaceNodeWithSum(root->left);
     int rightSum = replaceNodeWithSum(root->right);
-    root->data+= leftSum+ rightSum;
+    root->data += leftSum + rightSum;
     return root->data;
 }
-void leftView(node* root, int level , int &maxLevel ){
-    if(root == NULL) return ;
-    if(level > maxLevel){
-        cout << root->data<<", ";
+void leftView(node *root, int level, int &maxLevel)
+{
+    if (root == NULL)
+        return;
+    if (level > maxLevel)
+    {
+        cout << root->data << ", ";
         maxLevel = level;
     }
-    leftView(root->left, level+1 , maxLevel);
-    leftView(root->right , level+1 , maxLevel);
-
+    leftView(root->left, level + 1, maxLevel);
+    leftView(root->right, level + 1, maxLevel);
 }
-void rightView(node*root , int level , int &maxLevel){
-    if(root == NULL) return ;
-    if(level > maxLevel) {
-        cout << root->data<<", ";
+void rightView(node *root, int level, int &maxLevel)
+{
+    if (root == NULL)
+        return;
+    if (level > maxLevel)
+    {
+        cout << root->data << ", ";
         maxLevel = level;
     }
-    rightView(root->right,level+1 , maxLevel );
-    rightView(root->left, level+1 , maxLevel);
+    rightView(root->right, level + 1, maxLevel);
+    rightView(root->left, level + 1, maxLevel);
 }
 
-void distinctLevel(node* root ){
-    queue<node*> q;
+void distinctLevel(node *root)
+{
+    queue<node *> q;
     q.push(root);
     q.push(NULL);
-    while(!q.empty()){
-        node* front = q.front();
+    while (!q.empty())
+    {
+        node *front = q.front();
         q.pop();
-        if(front != NULL){
-            cout << front->data<<" ";
-            while(front != NULL){
-                if(front->left) 
-                q.push(front->left);
-                if(front->right)
-                q.push(front->right);
+        if (front != NULL)
+        {
+            cout << front->data << " ";
+            while (front != NULL)
+            {
+                if (front->left)
+                    q.push(front->left);
+                if (front->right)
+                    q.push(front->right);
                 front = q.front();
                 q.pop();
             }
-            cout <<endl;
+            cout << endl;
             q.push(NULL); // present level is completed traversed
         }
-
     }
 }
 
-void rigthViewIterative(node *root ){
+void rigthViewIterative(node *root)
+{
+    queue<node *> q;
+    q.push(root);
+    q.push(NULL);
+    cout << root->data << " ";
+    int level_ka_last = 0 ;
+    while (!q.empty())
+    {
+        node *front = q.front();
+        q.pop();
+        if (front != NULL)
+        {
 
+            while (front != NULL)
+            {
+                if (front->left)
+                    q.push(front->left);
+                if (front->right)
+                    q.push(front->right);
+                front = q.front();
+                q.pop();
+                if(front != NULL)
+                level_ka_last = front->data;
+            }
+            cout << level_ka_last<<" ";
+            
+
+            q.push(NULL); // present level is completed traversed
+        }
+    }
 }
 
-void zigZagTraversal(node* root ){
-    stack<node*> currLevel , nextLevel;
-    bool leftToRight= true;
+void zigZagTraversal(node *root)
+{
+    stack<node *> currLevel, nextLevel;
+    bool leftToRight = true;
     currLevel.push(root);
-    while(!currLevel.empty() or !nextLevel.empty() ){
-        node* top = currLevel.top();
-        cout << top->data<<",";
+    while (!currLevel.empty() or !nextLevel.empty())
+    {
+        node *top = currLevel.top();
+        cout << top->data << ",";
         currLevel.pop();
-        if(leftToRight == true){
-            if(top->left)
-            nextLevel.push(top->left);
-            if(top->right)
-            nextLevel.push(top->right);
-        }else{
-            if(top->right)
-            nextLevel.push(top->right);
-            if(top->left)
-            nextLevel.push(top->left);
+        if (leftToRight == true)
+        {
+            if (top->left)
+                nextLevel.push(top->left);
+            if (top->right)
+                nextLevel.push(top->right);
         }
-        if(currLevel.empty() == true){
+        else
+        {
+            if (top->right)
+                nextLevel.push(top->right);
+            if (top->left)
+                nextLevel.push(top->left);
+        }
+        if (currLevel.empty() == true)
+        {
             leftToRight = !leftToRight;
-            swap(currLevel , nextLevel);
+            swap(currLevel, nextLevel);
             cout << endl;
         }
     }
 }
 
-
-map<int,vector<int>> mp;
-void verticalOrderTraversal(node* root,int distance){
-    if(root == NULL) return ;
+map<int, vector<int>> mp;
+void verticalOrderTraversal(node *root, int distance)
+{
+    if (root == NULL)
+        return;
 
     mp[distance].push_back(root->data);
 
-    verticalOrderTraversal(root->left, distance-1);
-    verticalOrderTraversal(root->right , distance+1);
+    verticalOrderTraversal(root->left, distance - 1);
+    verticalOrderTraversal(root->right, distance + 1);
 }
 
-int height(node* root){
-    if(root == NULL){
+int height(node *root)
+{
+    if (root == NULL)
+    {
         return 0;
     }
-    return 1 + max(height(root->left) , height(root->right));
+    return 1 + max(height(root->left), height(root->right));
 }
-int diameter(node* root ){
-    if(root == NULL) return 0;
+int diameter(node *root)
+{
+    if (root == NULL)
+        return 0;
     int h1 = height(root->left);
-    int h2= height(root->right);
-    int op1= h1+h2;
+    int h2 = height(root->right);
+    int op1 = h1 + h2;
     int diameterL = diameter(root->left);
     int diameterR = diameter(root->right);
     return max({op1, diameterL, diameterR});
 }
 
-
-
-
 int main()
 {
     node *root = buildTree();
-    
-    cout << diameter(root);
-    int maxLevel  =  0;
-    leftView(root , 1 , maxLevel );
-    distinctLevel(root);
-    cout <<"\n";
-    verticalOrderTraversal(root , 0 );
-    for(auto it: mp){
-       for(int x : it.second ){
-           cout << x <<" ";
-       } 
-       cout <<endl;
-    }
+    rigthViewIterative(root);
+    // cout << diameter(root);
+    // int maxLevel  =  0;
+    // leftView(root , 1 , maxLevel );
+    // distinctLevel(root);
+    // cout <<"\n";
+    // verticalOrderTraversal(root , 0 );
+    // for(auto it: mp){
+    //    for(int x : it.second ){
+    //        cout << x <<" ";
+    //    }
+    //    cout <<endl;
+    // }
     // zigZagTraversal(root );
     // preOrder(root);
     // cout << "\n";
